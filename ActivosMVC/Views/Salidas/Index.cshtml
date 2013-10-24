@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@using ActivosMvc.Modelo
+@using ActivosMvc.DAO
+@using ActivosMvc.Services
+@model ActivoAsignado
+<!-- comentario para hacer pull-->
+
+@using (Html.BeginForm("Index", "Salidas", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>Rubro</td>
+            <td>
+                @Html.DropDownListFor(a => a.Almacen.Id, new SelectList(new CatalogosServices().getListadoAlmacenes(),"Id", "Descripcion"))
+            </td>
+            <td>Conceptos</td>
+            <td>
+                @Html.DropDownListFor(a => a.Id, new SelectList(ActivoDAO.getInstance().getListActivosPorAlmacen(),"Id", "Descripcion"))
+            </td>         
+        </tr>
+        <tr>
+            <td>Cantidad</td>
+            <td colspan="3">@Html.EditorFor(a => a.CantidadAsignada)</td>
+        </tr>
+        <tr>
+            <td>Direccion</td>
+            <td>
+                @Html.EditorFor(a => a.Area.NivelArea)
+            </td>
+            <td>Departamento</td>
+            <td>
+                @Html.EditorFor(a => a.Area.NivelArea)
+            </td>
+            <td>Subdepartamento</td>
+            <td>
+                @Html.EditorFor(a => a.Area.NivelArea)
+            </td>
+            <td>Agencia</td>
+            <td>
+                @Html.EditorFor(a => a.Area.NivelArea)
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="Aceptar" id="btnAceptar"/> </td>
+        </tr>
+    </table>  
+}
+
