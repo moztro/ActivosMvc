@@ -6,6 +6,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         
+        cargarAlmacenes();
+
         $('#btnSave').click(function () {
             var form = $("#formSave");
             save(form);
@@ -25,7 +27,7 @@
             type: "POST",
             url: "/Entradas/CargarAlmacenes",
             contentType: "application/json; charset=utf-8",
-            data: "",
+            data: JSON.stringify(text),
             dataType: "json",
             async: false,
             success: function (json) {
@@ -65,7 +67,7 @@
         </tr>
         <tr>
             <td>@Html.LabelFor(a => a.Almacen)</td>
-            <td>
+            <td><select id="Almacen"></select>
                 @Html.DropDownListFor(model => model.Almacen.Id, new SelectList(
                                             new CatalogosServices().getListadoAlmacenes(),
                                             "Id", "Descripcion"))
