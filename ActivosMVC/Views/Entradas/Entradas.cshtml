@@ -22,10 +22,11 @@
         $('#Almacen').empty();
 
         $.ajax({
-            type: 'POST',
-            url: '/Entradas/CargarAlmacenes',
-            data: '',
-            dataType: 'json',
+            type: "POST",
+            url: "/Entradas/CargarAlmacenes",
+            contentType: "application/json; charset=utf-8",
+            data: "",
+            dataType: "json",
             async: false,
             success: function (json) {
                 $(json).find('almacenes').each(function () {
