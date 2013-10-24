@@ -179,6 +179,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\EntradasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SalidasController.cs" />
     <Compile Include="DAO\ActivoDAO.cs" />
     <Compile Include="DAO\AlmacenDAO.cs" />
     <Compile Include="Enums\NivelArea.cs" />
@@ -434,12 +435,12 @@
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Home\Salidas.cshtml" />
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="SiteRsc\fonts\SEGOEUI.eot" />
     <Content Include="SiteRsc\fonts\SEGOEUI.TTF" />
     <Content Include="Views\Entradas\Entradas.cshtml" />
+    <Content Include="Views\Salidas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
