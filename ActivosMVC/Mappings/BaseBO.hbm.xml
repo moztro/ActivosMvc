@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  
+  <class name="ActivosMvc.Modelo.BaseBO,ActivosMvc" table="BaseBO">
+    <id name="Id" column="Id" type="int" unsaved-value="0">
+      <generator class="identity" />
+    </id>
+    <property name="Descripcion" type="string"/>
+  </class>
+  
+</hibernate-mapping>
+

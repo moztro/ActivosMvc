@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  
+  <joined-subclass name="ActivosMvc.Modelo.Almacen,ActivosMvc" extends="ActivosMvc.Modelo.BaseBO">
+    <key column="AlmacenId" />
+    <property name="Rubro" type="int"/>
+    <!--<list name="Activos" cascade="all-delete-orphan">
+      <key column="ActivoId"/>
+      <index column="AlmacenId"/>
+      <one-to-many class="Activos.Modelo.Activo"/>
+    </list>-->
+  </joined-subclass>
+</hibernate-mapping>
+
+

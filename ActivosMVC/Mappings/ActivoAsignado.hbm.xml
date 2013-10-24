@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  
+  <joined-subclass name="ActivosMvc.Modelo.ActivoAsignado,ActivosMvc" extends="ActivosMvc.Modelo.Activo" table="ActivoAsignado">
+    <key column="ActivoAsignadoId" />
+    <property name="Descripcion" type="string"/>
+    <property name="CantidadAsignada" type="int" />    
+  </joined-subclass>
+  
+</hibernate-mapping>

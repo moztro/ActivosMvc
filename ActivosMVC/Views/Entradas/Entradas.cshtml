@@ -1,0 +1,83 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<script src="~/SiteRsc/js/libs/jQuery1.8.2/jQuery1.8.2-min.js" type="text/javascript"></script>
+<script src="~/SiteRsc/js/metodosAction.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $('#btnSave').click(function () {
+            var form = $("#formSave");
+            save(form);
+        });
+        
+        $('#btnSearch').click(function () {
+            var form = $("#formSearch");
+            search(form);
+        });
+
+    });
+
+    function cargarAlmacenes() {
+        $('#Almacen').empty();
+
+        $.ajax({
+            type: 'POST',
+            url: '/Entradas/CargarAlmacenes',
+            data: '',
+            dataType: 'json',
+            async: false,
+            success: function (json) {
+                $(json).find('almacenes').each(function () {
+                    $('#Almacen').append('<option value="' + $(this).find('Id').text() + '">' + $(this).find('Descripcion').text() + '</option>');
+                });
+            }
+        });
+    }
+</script>
+
+@using ActivosMvc.Modelo
+@using ActivosMvc.Services
+@model Activo
+
+<h2>Entradas</h2>
+@using (Html.BeginForm("Search", "Entradas", FormMethod.Post, new { name="formSearch", id="formSearch" })) {
+    <input type="text" name="Id" placeholder="buscar por id..." />
+    <a href="#">
+        <img src="~/SiteRsc/img/btnSearch.png" id="btnSearch"/>
+    </a>
+}
+
+@using (Html.BeginForm("Save", "Entradas", FormMethod.Post, new { name = "formSave", id = "formSave" })) {
+    <table>
+        <tr>
+            <td>@Html.LabelFor(a => a.Descripcion)</td>
+            <td>@Html.EditorFor(a => a.Descripcion)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Precio) </td>
+            <td>@Html.EditorFor(a => a.Precio)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Existencia)</td>
+            <td>@Html.EditorFor(a => a.Existencia)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Almacen)</td>
+            <td>
+                @Html.DropDownListFor(model => model.Almacen.Id, new SelectList(
+                                            new CatalogosServices().getListadoAlmacenes(),
+                                            "Id", "Descripcion"))
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:right;">
+                <input type="button" id="btnSave" value="Guardar" class="btn_metro btn_metro_save"/>
+            </td>
+        </tr>
+    </table>     
+    <br />
+    <span id="msg" style="color:red;font-size:large;" />
+}
+
+

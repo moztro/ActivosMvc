@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="SiteRsc/Css/plantilla.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="Form1" runat="server">
+        <div id="cabecera-superior">
+            <div id="cabecera-superior-content">
+                <span class="app_nombre">Sistema Para el Control de Activos e Inventario</span>
+                <span id="fecha" class="app_nombre"></span>
+            </div>
+        </div>
+
+        <div id="cabecera-titulo">
+            <div id="cabecera-titulo-content">
+                <img src="sitersc/img/banner-fiscalia.jpg" alt="" />
+                <div id="menu">
+                    @RenderSection("menu", required: false)
+                </div>
+            </div>
+        </div>
+
+        <div id="wrapper">
+            <div id="pageBody-content">
+                <div id="contenido">
+                    @RenderBody()
+                    <a href="/">Home</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer-deeper">
+	        <span>Departamento de Desarrollo de Sistemas. Ext.41135</span>
+	        <span  style="float:right">Fiscalia General del Estado de Yucatán <span id="anio"><!-- año --></span></span>                
+        </div>
+
+    </form>
+
+    <div id="pageActivity">
+        <img src="SiteRsc/Img/indicator_red.gif" />Cargando....
+    </div>
+
+</body>
+</html>
