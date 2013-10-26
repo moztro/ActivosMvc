@@ -9,7 +9,7 @@ namespace ActivosMvc.Modelo
     public class Almacen : BaseBO
     {
         public virtual Rubro Rubro { get; set; }
-        public virtual List<Activo> Activos { get; set; }
+        //public virtual List<Activo> Activos { get; set; }
 
         public Almacen() { }
 
@@ -26,10 +26,10 @@ namespace ActivosMvc.Modelo
             this.Rubro = _rubro;
         }
 
-        public Almacen(Rubro _rubro, List<Activo> _activos)
+        /*public Almacen(Rubro _rubro, List<Activo> _activos)
         {
             this.Rubro = _rubro;
             this.Activos = _activos;
-        }
+        }*/
     }
 }

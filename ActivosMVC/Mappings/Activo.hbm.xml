@@ -3,6 +3,7 @@
 
   <joined-subclass name="ActivosMvc.Modelo.Activo,ActivosMvc" extends="ActivosMvc.Modelo.BaseBO" table="Activo">
     <key column="ActivoId" />
+    <property name="Folio" type="string" />
     <property name="Existencia" type="int"/>
     <property name="Precio" type="double"/>
     <many-to-one name="Almacen" column="AlmacenId" lazy="false" />    

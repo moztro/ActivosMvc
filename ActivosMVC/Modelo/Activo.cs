@@ -8,6 +8,7 @@ namespace ActivosMvc.Modelo
 {
     public class Activo : BaseBO
     {
+        public virtual string Folio { get; set; }
         public virtual int Existencia { get; set; }
         public virtual double Precio { get; set; }
         public virtual Almacen Almacen { get; set; }

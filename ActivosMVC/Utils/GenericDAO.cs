@@ -42,5 +42,9 @@ namespace ActivosMvc.Utils
             }
             return false;
         }
+
+        public ISession getSession() {
+            return this.session;
+        }
     }
 }

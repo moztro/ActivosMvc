@@ -4,11 +4,10 @@
   <joined-subclass name="ActivosMvc.Modelo.Almacen,ActivosMvc" extends="ActivosMvc.Modelo.BaseBO">
     <key column="AlmacenId" />
     <property name="Rubro" type="int"/>
-    <!--<list name="Activos" cascade="all-delete-orphan">
+    <!--<set name="Activos" cascade="all-delete-orphan">
       <key column="ActivoId"/>
-      <index column="AlmacenId"/>
       <one-to-many class="Activos.Modelo.Activo"/>
-    </list>-->
+    </set>-->
   </joined-subclass>
 </hibernate-mapping>
 

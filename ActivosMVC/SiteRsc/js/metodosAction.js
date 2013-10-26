@@ -18,12 +18,22 @@ function save(form) {
 }
 
 
-function search(form) {
-    var url = form.attr("action");
-    var formData = form.serialize();
-
-    $.post(url, formData, function (data) {
-        $('#form').val(data);
+function search(url, id) {
+    
+    $.ajax({
+        url: url,
+        type: 'POST',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (json) {
+            $('#Descripcion').val(json.Descripcion);
+            $('#Existencia').val(json.Existencia);
+            $('#Precio').val(json.Precio);
+            $('#Almacen').val(json.Almacen.Id);
+        },
+        error: function () {
+            alert("Error "+json);
+        }
     });
 }
 
@@ -48,41 +58,35 @@ function validaCampos() {
     return valido;
 }
 
-var pageUrl = '<%=ResolveUrl("~/MedidorAgua.aspx")%>'
-function llenarColonias() {
-    $("#<%=ddlColonias.ClientID%>").attr("disabled", "disabled");
-    if ($('#<%=ddlMunicipio.ClientID%>').val() == "0") {
-        $('#<%=ddlColonias.ClientID %>').empty().append('<option selected="selected" value="0">seleccionar Colonia</option>');
+function llenarD(control, url) {
+    if (control.val() == "0") {
+        control.empty().append('<option selected="selected" value="0">--Seleccionar--</option>');
     }
     else {
-        $('#<%=ddlColonias.ClientID %>').empty().append('<option selected="selected" value="0">Cargando...</option>');
+        control.empty().append('<option selected="selected" value="0">Cargando...</option>');
         $.ajax({
-            type: "POST",
-            url: pageUrl + '/llenarColonias',
-            data: '{idMunicipio: ' + $('#<%=ddlMunicipio.ClientID%>').val() + '}',
+            type: 'POST',
+            url: url,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: OnLLenarColonias,
+            success: function (response) {
+                llenarControl(response, control);
+            },
             failure: function (response) {
-                alert(response.d);
+                alert(response);
             }
         });
     }
 }
 
-function OnLLenarColonias(response) {
-    llenarControl(response.d, $("#<%=ddlColonias.ClientID %>"));
-}
-
 function llenarControl(list, control) {
     if (list.length > 0) {
-        control.removeAttr("disabled");
-        control.empty().append('<option selected="selected" value="0">Seleccionar Colonia</option>');
+        control.empty().append('<option selected="selected" value="0">--Seleccionar--</option>');
         $.each(list, function () {
-            control.append($("<option></option>").val(this['Value']).html(this['Text']));
+            control.append($("<option></option>").val(this['Id']).html(this['Descripcion']));
         });
     }
     else {
-        control.empty().append('<option selected="selected" value="0">Sin Colonias Disponibles<option>');
+        control.empty().append('<option selected="selected" value="0">Sin datos disponibles<option>');
     }
 }

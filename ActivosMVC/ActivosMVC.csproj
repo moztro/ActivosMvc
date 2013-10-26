@@ -43,6 +43,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>NhibernateUtils\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Lib.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=92212eec0425916e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Lib.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>NhibernateUtils\log4net.dll</HintPath>
@@ -177,6 +181,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ConfiguracionController.cs" />
+    <Compile Include="Controllers\ConsultasController.cs" />
     <Compile Include="Controllers\EntradasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SalidasController.cs" />
@@ -261,6 +267,8 @@
     <None Include="NhibernateUtils\nhibernate-mapping.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Lib.Web.Mvc.dll" />
+    <Content Include="Lib.Web.Mvc.xml" />
     <Content Include="packages\Common.Logging.1.2.0\Common.Logging.1.2.0.nupkg" />
     <Content Include="packages\repositories.config" />
     <Content Include="packages\Spring.Core.1.3.2\Spring.Core.1.3.2.nupkg" />
@@ -323,6 +331,9 @@
     <Content Include="packages\Spring.Web.1.3.2\lib\net40\Spring.Web.dll" />
     <Content Include="packages\Spring.Web.1.3.2\lib\net40\Spring.Web.pdb" />
     <Content Include="packages\Spring.Web.1.3.2\lib\net40\Spring.Web.xml" />
+    <Content Include="SiteRsc\css\ui.jqgrid.css" />
+    <Content Include="SiteRsc\js\libs\grid.locale-es.js" />
+    <Content Include="SiteRsc\js\libs\jquery.jqGrid.min.js" />
     <Content Include="SiteRsc\js\metodosAction.js" />
     <Content Include="SiteRsc\Scripts\jquery-1.7.1.js" />
     <Content Include="SiteRsc\Scripts\jquery-1.7.1.min.js" />
@@ -441,6 +452,8 @@
     <Content Include="SiteRsc\fonts\SEGOEUI.TTF" />
     <Content Include="Views\Entradas\Entradas.cshtml" />
     <Content Include="Views\Salidas\Index.cshtml" />
+    <Content Include="Views\Consultas\Consultas.cshtml" />
+    <Content Include="Views\Configuracion\Configuracion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

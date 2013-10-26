@@ -3,7 +3,6 @@
   
   <joined-subclass name="ActivosMvc.Modelo.ActivoAsignado,ActivosMvc" extends="ActivosMvc.Modelo.Activo" table="ActivoAsignado">
     <key column="ActivoAsignadoId" />
-    <property name="Descripcion" type="string"/>
     <property name="CantidadAsignada" type="int" />    
   </joined-subclass>
   

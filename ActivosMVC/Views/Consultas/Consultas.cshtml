@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Consultas";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<link rel="stylesheet" type="text/css" media="screen" href="~/SiteRsc/css/ui.jqgrid.css" />
+
+<script src="~/SiteRsc/js/libs/jQuery1.8.2/jQuery1.8.2-min.js" type="text/javascript"></script>
+<script src="~/SiteRsc/js/libs/jquery.jqGrid.min.js" type="text/javascript"></script>
+<script src="~/SiteRsc/js/libs/grid.locale-es.js" type="text/javascript"></script>
+<script src="~/SiteRsc/js/metodosAction.js" type="text/javascript"></script>
+
+<h2>Consultas</h2>
+
+@using ActivosMvc.Services
+@using ActivosMvc.Modelo
+@model Activo
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        onLoadAlmacenes();
+
+        $('#btnSearch').click(function () {
+            var id = $('#almacenes').val();
+            url = '/Consultas/GetActivos/'+id;
+            table = $('#gridActivos');
+            searchAll(url, table);
+        });
+
+    });
+
+    function searchAll(url, table) {
+        table.empty();
+        table.append('<tr>'
+                             + '<td hidden="true">Id</td>'
+                             + '<td><b>Folio</b></td>'
+                             + '<td><b>Concepto</b></td>'
+                             + '<td><b>Existencia</b></td>'
+                             + '<td><b>Ver Kárdex</b></td>'
+                         + '</tr>');
+        $.getJSON(url, function (data) {
+            $.each(data, function (key, val) {
+                var obj ='<tr>'
+                            +'<td hidden="true">' + val.Id + '</td>'
+                            +'<td>' + val.Folio + '</td>'
+                            +'<td>' + val.Descripcion + '</td>'
+                            +'<td>' + val.Existencia + '</td>'
+                            +'<td><a href="#"><img src="/SiteRsc/img/btnLista.png" /></a></td>'
+                        +'</tr>';
+                table.append(obj);
+            });
+        });
+    }
+    
+    function onLoadAlmacenes() {
+        var control = $('#almacenes');
+        var url = '/Consultas/CargarCombo';
+        llenar(control, url);
+    }
+</script>
+
+
+<select id="almacenes" class="input_select"></select>
+<input type="button" id="btnSearch" value="Buscar" class="btn_metro btn_metro_search" />
+<table id="gridActivos" style="width:90%;text-align:center;" class="gvClass"></table>
+
+
+
+
